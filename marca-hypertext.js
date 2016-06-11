@@ -259,8 +259,6 @@ module.exports = function (Marca) {
 		return [];
 	};
 
-	Marca.HypertextElementProtos["blockpt"] =
-		Marca.DOMElementHypertextBlockPassthrough;
 	Marca.HypertextElementProtos = {
 		c:		Marca.DOMElementComment,
 		meta:		Marca.DOMElementMeta,
