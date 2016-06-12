@@ -166,10 +166,9 @@ module.exports = function (Marca) {
 		Object.create(Marca.DOMElementHypertextFlow);
 
 	Marca.DOMElementHypertextTable =
-		Object.create(Marca.DOMElementHypertextBlock);
+		Object.create(Marca.DOMElementHypertext);
 	Marca.DOMElementHypertextTable.initContent = function (node) {
-		var ta = Marca.DOMElementHypertextBlock.initContent
-			      .call(this, node);
+		var ta = Marca.DOMElementHypertext.initContent.call(this, node);
 
 		for (var i = 0; i < this.children.length; i++)
 			if (!Marca.DOMElementHypertextTableSection
@@ -287,6 +286,6 @@ module.exports = function (Marca) {
 		sub:		Marca.DOMElementHypertextSubscript,
 		sup:		Marca.DOMElementHypertextSuperscript,
 		code:		Marca.DOMElementHypertextCode,
-		blockpt:	Marca.DOMElementHypertextBlockPassrthrough
+		blockpt:	Marca.DOMElementHypertextBlockPassthrough
 	};
 };
