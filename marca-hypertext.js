@@ -221,6 +221,9 @@ module.exports = function (Marca) {
 	Marca.DOMElementHypertextTableCell =
 		Object.create(Marca.DOMElementHypertextFlow);
 
+	Marca.DOMElementHypertextSpan =
+		Object.create(Marca.DOMElementHypertextInline);
+
 	Marca.DOMElementHypertextAnchor =
 		Object.create(Marca.DOMElementHypertextInline);
 	Marca.DOMElementHypertextAnchor.initContent = function (node) {
@@ -289,6 +292,7 @@ module.exports = function (Marca) {
 		tfoot:		Marca.DOMElementHypertextTableFoot,
 		tr:		Marca.DOMElementHypertextTableRow,
 		td:		Marca.DOMElementHypertextTableCell,
+		span:		Marca.DOMElementHypertextSpan,
 		a:		Marca.DOMElementHypertextAnchor,
 		strong:		Marca.DOMElementHypertextStrong,
 		em:		Marca.DOMElementHypertextEmphasis,
