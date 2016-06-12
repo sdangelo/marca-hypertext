@@ -16,8 +16,15 @@
 
 module.exports = function (Marca) {
 	Marca.DOMElementHypertext = Object.create(Marca.DOMElement);
+	Marca.DOMElementHypertext.preformatted = false;
 	Marca.DOMElementHypertext.initContent = function (node) {
 		var ta = Marca.DOMElement.initContent.call(this, node);
+
+		this.id = node.attributes.id;
+		this.class = node.attributes.class;
+
+		if (this.preformatted)
+			return ta;
 
 		var child, nextChild;
 		var childIsText, nextChildIsText;
@@ -55,9 +62,6 @@ module.exports = function (Marca) {
 						ta[j].position--;
 			}
 		}
-
-		this.id = node.attributes.id;
-		this.class = node.attributes.class;
 
 		return ta;
 	};
@@ -243,6 +247,12 @@ module.exports = function (Marca) {
 	Marca.DOMElementHypertextCode =
 		Object.create(Marca.DOMElementHypertextInline);
 
+	Marca.DOMElementHypertextPreformatted =
+		Object.create(Marca.DOMElementHypertextBlock);
+	Marca.DOMElementHypertextPreformatted.preformatted = true;
+	Marca.DOMElementHypertextPreformatted.pushAttrs =
+		{ preformatted: true };
+
 	Marca.DOMElementHypertextBlockPassthrough =
 		Object.create(Marca.DOMElementHypertextBlock);
 	Marca.DOMElementHypertextBlockPassthrough.initContent = function (node)
@@ -251,7 +261,7 @@ module.exports = function (Marca) {
 			throw "passthrough block contains multiple children "
 			      + "element";
 		if (!(Marca.DOMElementText.isPrototypeOf(this.children[0])))
-			throw "passtrhough block's child is not a text element";
+			throw "passthrough block's child is not a text element";
 		if (!("output" in node.attributes))
 			throw "passthrough block without output attribute";
 		this.output = node.attributes.output;
@@ -286,6 +296,7 @@ module.exports = function (Marca) {
 		sub:		Marca.DOMElementHypertextSubscript,
 		sup:		Marca.DOMElementHypertextSuperscript,
 		code:		Marca.DOMElementHypertextCode,
+		pre:		Marca.DOMElementHypertextPreformatted,
 		blockpt:	Marca.DOMElementHypertextBlockPassthrough
 	};
 };
