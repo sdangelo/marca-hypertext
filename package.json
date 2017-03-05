@@ -1,6 +1,6 @@
 {
   "name": "marca-hypertext",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Hypertext for Marca",
   "main": "marca-hypertext.js",
   "scripts": {
@@ -23,6 +23,6 @@
     "email": "zanga.mail@gmail.com"
   },
   "peerDependencies": {
-    "marca": "0.0.x"
+    "marca": "0.1.x"
   }
 }
