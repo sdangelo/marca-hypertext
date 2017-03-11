@@ -6,6 +6,7 @@ I am too lazy to explain hows and whys.
 
 ## TODO
 
+* figure tag as in HTML?
 * better define flow/block/etc. and check properly;
 * browserification;
 * more DRY;

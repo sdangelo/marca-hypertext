@@ -275,6 +275,25 @@ module.exports = function (Marca) {
 		return ta;
 	};
 
+	Marca.DOMElementHypertextImage =
+		Object.create(Marca.DOMElementHypertextInline);
+	Marca.DOMElementHypertextImage.name = "image";
+	Marca.DOMElementHypertextImage.initContent = function (node) {
+		var ta = Marca.DOMElementHypertextInline.initContent
+			      .call(this, node);
+
+		if (this.children.length != 0)
+			throw this.name + " element has children";
+
+		if (!("src" in node.attributes))
+			throw this.name + " element without src attribute";
+		this.src = node.attributes.src;
+		if ("alt" in node.attributes)
+			this.alt = node.attributes.alt;
+
+		return ta;
+	}
+
 	Marca.DOMElementHypertextStrong =
 		Object.create(Marca.DOMElementHypertextInline);
 	Marca.DOMElementHypertextStrong.name = "strong";
@@ -336,6 +355,7 @@ module.exports = function (Marca) {
 		td:		Marca.DOMElementHypertextTableCell,
 		span:		Marca.DOMElementHypertextSpan,
 		a:		Marca.DOMElementHypertextAnchor,
+		img:		Marca.DOMElementHypertextImage,
 		strong:		Marca.DOMElementHypertextStrong,
 		em:		Marca.DOMElementHypertextEmphasis,
 		del:		Marca.DOMElementHypertextDeleted,

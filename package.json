@@ -1,6 +1,6 @@
 {
   "name": "marca-hypertext",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Hypertext for Marca",
   "main": "marca-hypertext.js",
   "scripts": {
